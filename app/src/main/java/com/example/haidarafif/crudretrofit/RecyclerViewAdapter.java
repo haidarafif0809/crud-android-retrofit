@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,11 +25,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context context;
     private List<Result> results;
-
-    @BindView(R.id.textNPM) TextView textViewNPM;
-    @BindView(R.id.textNama) TextView textViewNama;
-    @BindView(R.id.textKelas) TextView textViewKelas;
-    @BindView(R.id.textSesi) TextView textViewSesi;
 
     public RecyclerViewAdapter(Context context, List<Result> results) {
 
@@ -44,18 +42,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+
         Result result = results.get(position);
         holder.textViewNPM.setText(result.getNpm());
         holder.textViewNama.setText(result.getNama());
         holder.textViewKelas.setText(result.getKelas());
         holder.textViewSesi.setText(result.getSesi());
+
+        Picasso.with(context)
+                .load("http://192.168.1.20/crud_android/foto/"+result.getFoto())
+                .placeholder(R.drawable.user)   // optional
+                .error(R.drawable.user)
+                .into(holder.imgMahasiswa);
     }
 
     @Override
     public int getItemCount() {
+
         return results.size();
     }
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -65,6 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.textNama) TextView textViewNama;
         @BindView(R.id.textKelas) TextView textViewKelas;
         @BindView(R.id.textSesi) TextView textViewSesi;
+        @BindView(R.id.imgMahasiswa) ImageView imgMahasiswa;
 
         public ViewHolder(View itemView) {
             super(itemView);

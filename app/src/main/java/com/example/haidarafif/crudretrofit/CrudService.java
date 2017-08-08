@@ -40,8 +40,8 @@ public class CrudService {
 
     }
 
-    public void tambahMahasiswa(String npm, String nama, String kelas, String sesi, Callback callback){
-        registerApi.daftar(npm,nama,kelas,sesi).enqueue(callback);
+    public void tambahMahasiswa(String npm, String nama, String kelas, String sesi,String photo, Callback callback){
+        registerApi.daftar(npm,nama,kelas,sesi,photo).enqueue(callback);
     }
 
     public void updateMahasiswa(String npm,String nama,String kelas, String sesi, Callback callback){

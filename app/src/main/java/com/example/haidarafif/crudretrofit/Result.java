@@ -11,6 +11,7 @@ public class Result {
     String nama;
     String kelas;
     String sesi;
+    String foto;
 
     public String getNpm() {
         return npm;
@@ -26,5 +27,8 @@ public class Result {
 
     public String getSesi() {
         return sesi;
+    }
+    public String getFoto() {
+        return foto;
     }
 }

@@ -17,8 +17,8 @@ public interface RegisterApi {
     @POST("insert.php")
     Call<Value> daftar(@Field("npm") String npm,
                        @Field("nama") String nama,
-                       @Field("kelas") String kelas,
-                       @Field("sesi") String sesi);
+                       @Field("kelas") String kelas, @Field("sesi") String sesi ,
+                      @Field("photo") String photo);
 
     @GET("read.php")
     Call<Value> view();
